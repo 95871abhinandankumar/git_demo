@@ -1,0 +1,46 @@
+Javascript
+
+- dynamic html
+- client side scripting language
+- interpreter
+- weakly typed : no data types
+- object based
+
+JS Runtime
+single threaded
+multi threading : async & callbacks
+
+EC : Execution context
+
+stack : call stack (functions)
+heap : memory allocations
+
+Types
+
+1. internal : <script></script>
+2. external : <script src="filename.js"></script>
+
+<script></script>
+<script src="filename.js"></script>
+
+Variables
+
+1. var : scoping issues
+2. let & const : block scope variables
+
+Functions
+
+1. named function
+   function fun_name(){}
+2. unnamed/anonymous function
+   function(){}
+3. arrow function (=>)
+   ()=>{}
+
+All functions are return type functions by default
+
+window
+
+- document : DOM (dynamic html)
+- location : BOM (url, refresh, back, forward)
+- navigator : BOM (use browser supported features, camera, gps, mic, speakers, bluetooth)

@@ -1,0 +1,22 @@
+<script>
+      // named function
+      // default arguments
+      function test(a, b = 0) {
+        console.log("test function", a, b);
+        // returns undefined by default
+      }
+      const result1 = test();
+      test(1, 2);
+      test(3);
+
+      console.log("not returning", result1);
+      // unnamed function
+      // expression functions
+      // variable = expression
+      const demo = function () {
+        console.log("anonymous function");
+        return 10;
+      };
+      const result2 = demo();
+      console.log("returning a value", result2);
+    </script>

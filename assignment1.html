@@ -1,0 +1,112 @@
+<html>
+    <head>
+        <style>
+            a{
+                text-decoration: none;
+            }
+
+            a:hover{
+                background-color: rgb(206, 195, 195);
+            }
+
+            .display{
+                display: none;
+            }
+
+            .grow{
+                height: 20px;
+                width: 100px;
+                overflow: hidden;
+            }
+
+            .grow:hover{
+                height: 110px;
+                width: 100px;
+                margin-top: 80px;
+                background-color:bisque;
+            }
+        </style>
+
+    </head>
+    <body>
+        <ul style="display: flex; justify-content:space-around; background-color: aquamarine; list-style-type: ''; height: 40px; vertical-align: middle; align-items:center;">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Me</a></li>
+            <li>
+                <div class="grow" style="text-align: center;">
+                    <a onmouseover="show()" onmouseout="hide()">Connect</a><br>
+                    <div style="margin-top: 10px;"></div>
+                    <a href="#">Gmail</a><br>
+                    <a href="#">Github</a><br>
+                    <a href="#">Leetcode</a><br>
+                    <a href="#">Linked In</a>
+                </div>
+            </li>
+        </ul>
+
+        <script>
+            function show()
+            {
+                let contact = document.getElementById("contact");
+
+                if(contact.classList.contains("display"))
+                    contact.classList.remove("display");
+            }
+
+            function hide(){
+                let contact = document.getElementById("contact");
+
+                if(!contact.classList.contains("display"))
+                    contact.classList.add("display");
+            }
+        </script>
+
+<script>
+    // to access the current object instance : this
+    const user = {
+      name: "john",
+      age: 12,
+      greeting: function () {
+        console.log(this);
+        setTimeout(() => {
+            console.log(this);
+          console.log("hello from", this.name);
+        }, 1000);
+      },
+    };
+    user.greeting();
+    user.name = "demo";
+    user.greeting();
+  </script>
+
+<script>
+    // spread operator : ...
+    // used to make immutable objects, arrays
+    const product = { id: 100, name: "test", price: 1200 };
+    const cart = [];
+    // cart.push(product); // copies the reference of product
+    // cart.push(Object.assign({},product)); // ES5
+    cart.push({ ...product }); // ES6 : creating a new reference (immutable)
+    console.log(product);
+    console.log(cart);
+    cart[0].qty = 1;
+    console.log(product);
+    console.log(cart);
+  </script>
+
+<script>
+    const no = 10;
+    console.log(no.toFixed(2));
+    const str = "test";
+    // includes, startsWith, endsWith, length, toUpperCase, toLowerCase
+
+    console.log(str.includes("e"));
+    const dt = new Date();
+
+    console.log(dt);
+    // Math object
+    const arr = [];
+    // filter, find, indexOf, length, map, forEach, push, pop, sort, reverse, shift, unshift, includes, slice, splice
+  </script>
+    </body>
+</html>

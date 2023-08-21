@@ -1,0 +1,25 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <input type="text" />
+        <button onclick="writeText()">1</button>
+        <button onclick="writeText()">2</button>
+        <button onclick="writeText()">3</button>
+        <button onclick="writeText()">4</button>
+        <button onclick="writeText()">5</button>
+        <button onclick="writeText()">6</button>
+        <button onclick="writeText()">7</button>
+        <button onclick="writeText()">8</button>
+        <button onclick="writeText()">9</button>
+        <button onclick="writeText()">0</button>
+    
+        <script>
+          const ele = document.querySelector("input");
+          function writeText() {
+            ele.value = event.target.innerText;
+          }
+        </script>
+      </body>
+</html>

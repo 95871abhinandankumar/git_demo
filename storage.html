@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+    function addData(){
+        const data = {"name":mike, age:12};
+
+        sessionStorage.setItem("data", JSON.stringify(data));
+
+    }
+
+    function retrieveData(){
+        let data = sessionStorage.getItem("data");
+        data = JSON.parse(data);
+        console.log(data);
+    }
+</script>
+</body>
+</html>

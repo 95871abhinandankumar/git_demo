@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input
+      type="text"
+      onkeypress="testFunction()"
+      onkeydown="testFunction()"
+      onkeyup="testFunction()"
+    />
+    <script>
+      function testFunction() {
+        console.log(event.type);
+      }
+    </script>
+  </body>
+ 
+moin to Everyone (21 Aug 2023, 12:45 PM)
+<body>
+    <input
+      type="text"
+      onkeypress="testFunction()"
+      onkeydown="testFunction()"
+      onkeyup="testFunction()"
+    />
+    <input id="txt" onkeypress="restrictText()" />
+    <script>
+      function restrictText() {
+        if (event.keyCode < 48 || event.keyCode > 57) {
+          event.preventDefault();
+        }
+      }
+      function testFunction() {
+        console.log(event);
+      }
+    </script>
+  </body>
+</html>

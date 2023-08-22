@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+                    <p>comment<input id="comment" name="comment" type="text" placeholder=""></p>
+                    <p><button onclick="addData()">Add</button><p>
+
+
+    <div id="showData">
+        <table id="table1">
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        let arr=[];
+        let table = document.querySelector('tbody');
+
+        function addData(){
+            let comment = document.getElementById("comment");
+            data = comment.value;
+
+            arr.push(data);
+            console.log(arr);
+
+            table.innerHTML+=`<tr><td><input onchange="updateData(this)" value=${data}><button onclick="deleteData(this)">Remove</button></td></tr>`;
+
+        }
+
+        function updateData(ele){
+            let index = ele.parentElement.parentElement.rowIndex;
+            arr[index] = ele.value;
+            console.log(arr);
+        }
+
+        function deleteData(ele){
+            let index = ele.parentElement.parentElement.rowIndex;
+            let table = document.getElementById("table1");
+            arr.splice(index, 1);
+            table.childNodes[1].removeChild(table.childNodes[1].childNodes[index+1]);
+            console.log(arr);
+
+        }
+
+
+        
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+tsc --init
+
+definetlytyped.github.io
+
+
+// vs code plugins
+
+auto rename tag
+error lens 
+git lens
+paste json as code
+path intelligence
+pretitier.

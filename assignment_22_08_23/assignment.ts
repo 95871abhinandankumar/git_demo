@@ -27,7 +27,7 @@ async function api(obj) {
                       </ul>`
                       future_5days_data += day1;
           }
-          let div1 = document.querySelector('#result');
+          let div1 = document.querySelector('#result') as HTMLDivElement;
             div1.innerHTML += current;
             div1.innerHTML += future_5days_data;
 
@@ -35,7 +35,7 @@ async function api(obj) {
         }
 
       ).catch((err)=>{
-          let div1 = document.querySelector('#result');
+          let div1 = document.querySelector('#result') as HTMLDivElement;
           div1.innerHTML = err;
           
         

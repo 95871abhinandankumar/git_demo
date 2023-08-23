@@ -1,0 +1,8 @@
+create an application to display current weather forecast using https://www.weatherapi.com/
+1. display the weather forecast based on a location
+2. location can be retrieved using the geolocation api (optional)
+   or
+   directly enter the city details
+3. display the current temp, humidity, min temp, max temp
+
+http://api.weatherapi.com/v1/forecast.json?key=apiKey&q=London&days=5&aqi=no&alerts=no

@@ -59,12 +59,12 @@ function api(obj) {
                         var day1 = "<h2>day".concat(x, "</h2><ul><li>Average Tempreature : ").concat(data.forecast.forecastday[x].day.avgtemp_c, "</li>\n                          <li>average Humidity : ").concat(data.forecast.forecastday[x].day.avghumidity, "</li>\n                          <li>Min tempreature : ").concat(data.forecast.forecastday[x].day.mintemp_c, "</li>\n                          <li>Max Tempreature : ").concat(data.forecast.forecastday[x].day.maxtemp_c, "</li>\n                      </ul>");
                         future_5days_data += day1;
                     }
-                    var div1 = document.querySelector('div');
+                    var div1 = document.querySelector('#result');
                     div1.innerHTML += current;
                     div1.innerHTML += future_5days_data;
                     console.log(data);
                 }).catch(function (err) {
-                    var div1 = document.querySelector('div');
+                    var div1 = document.querySelector('#result');
                     div1.innerHTML = err;
                 })];
         });

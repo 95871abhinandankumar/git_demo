@@ -1,1 +1,3 @@
-<app-product-list></app-product-list>
+<app-checkout></app-checkout>
+<app-currency (currencySelected)="getCode($event)"></app-currency>
+<app-product-list [data2]="code"></app-product-list>

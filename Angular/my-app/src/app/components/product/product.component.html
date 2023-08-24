@@ -1,0 +1,13 @@
+<div style="width: 300px;height: 300px; margin: 100px;">
+    <img class="center" [src]="data.productImage" style="height: 200px; width: 200px;">
+    <h4 class="center">{{data.productName | uppercase }}</h4>
+    <h5 class="center">{{data.productPrice | conversion : code | currency : code}}</h5>
+    <h5 class="center">{{data.productPrice | discount : data.productSalePrice}}</h5>
+
+    <!-- condition statement use *ngIf="condition" -->
+    <button (click)="notifyParent($event)" class="center" *ngIf="data.productStock > 0;else stock">Add to cart</button>
+</div>
+
+<ng-template #stock>
+    <p>Out of Stock</p>
+</ng-template>

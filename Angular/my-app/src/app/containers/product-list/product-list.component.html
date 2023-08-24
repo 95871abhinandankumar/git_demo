@@ -1,0 +1,3 @@
+<div *ngFor="let item of plist">
+    <app-product [data]="item" (btnClick)="addItem($event)"></app-product>
+</div>

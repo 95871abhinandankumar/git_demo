@@ -11,7 +11,9 @@ import { ProductPriceComponent } from './components/product-price/product-price.
 import { ReactiveFormsModule } from '@angular/forms';
 import { CheckoutComponent } from './containers/checkout/checkout.component';
 import {errorTailorImports, provideErrorTailorConfig} from '@ngneat/error-tailor';
-import { CurrencyComponent } from './components/currency/currency.component'
+import { CurrencyComponent } from './components/currency/currency.component';
+import { NumberOnlyDirective } from './directives/number-only.directive';
+import { ImgFallbackDirective } from './directives/img-fallback.directive'
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { CurrencyComponent } from './components/currency/currency.component'
     ConversionPipe,
     ProductPriceComponent,
     CheckoutComponent,
-    CurrencyComponent
+    CurrencyComponent,
+    NumberOnlyDirective,
+    ImgFallbackDirective
   ],
   imports: [
     BrowserModule,

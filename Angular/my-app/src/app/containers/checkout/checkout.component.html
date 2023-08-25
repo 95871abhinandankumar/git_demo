@@ -10,13 +10,24 @@
     <label>Email : </label>
     <input type="text" formControlName="email">
     <br>
-    <div formGroupName="address">
+    <!-- <div formGroupName="address">
         <label>City : </label>
         <input type="text" formControlName="city"><br>
         <label>Pincode : </label>
         <input type="text" formControlName="pincode">
-        <!-- <small *ngIf="checkoutForm.get('address')?.get('pincode')?.hasError('zipcode')">Invalid Pincode</small> -->
+        /*<small *ngIf="checkoutForm.get('address')?.get('pincode')?.hasError('zipcode')">Invalid Pincode</small>*/
         <br>
+    </div> -->
+    <div formArrayName="address">
+        <button type="button" (click)="addAddress()">Add</button>
+        <div [formGroupName]="i" *ngFor="let ctrl of addressObj.controls; let i = index">
+            <label>City : </label>
+            <input type="text" formControlName="city"><br>
+            <label>Pincode : </label>
+            <input type="text" formControlName="pincode">
+            <button type="button" (click)="removeAddress(i)">Remove</button>
+            <br>
+        </div>
     </div>
     <button type="submit">Submit</button>
     <pre>Form Data : {{checkoutForm.value | json}}</pre>

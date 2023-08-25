@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -11,11 +11,30 @@ export class CheckoutComponent {
   checkoutForm: FormGroup = new FormGroup({
     name: new FormControl('Abhinandan', [Validators.required, Validators.minLength(4),]),
     email: new FormControl('test@gmail.com', {updateOn : 'change',validators:[Validators.required]}),
-    address: new FormGroup({
+    address: new FormArray([]),
+  }, {updateOn: 'submit'});
+
+
+  get addressObj(){
+    return this.checkoutForm.get('address') as FormArray;
+
+  }
+
+
+  newAddress(){
+   return new FormGroup({
       city : new FormControl('Hyderabad', [Validators.required]),
       pincode: new FormControl(null, [this.zipcodeValidator()]),
-    }),
-  }, {updateOn: 'submit'});
+    });
+  }
+
+  addAddress(){
+    this.addressObj.push(this.newAddress());
+  }
+
+  removeAddress(index : number){
+    this.addressObj.removeAt(index);
+  }
 
 
   zipcodeValidator() {

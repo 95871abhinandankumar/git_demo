@@ -1,3 +1,14 @@
+<!-- this work because varibale and directive name are same, But for other case you have add directives and pass varibales seperatly -->
+<input type="text" placeholder="pincode" appNumberOnly>
+<br>
+<br>
+<br>
+<br>
+<input type="text" placeholder="pincode" appNumberOnly="6">
+<br>
+<br>
+<br>
+<br>
 <app-checkout></app-checkout>
 <app-currency (currencySelected)="getCode($event)"></app-currency>
 <app-product-list [data2]="code"></app-product-list>

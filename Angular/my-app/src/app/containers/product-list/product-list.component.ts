@@ -17,7 +17,7 @@ export class ProductListComponent {
     productStock: 2,
   }, {
     productId:101,
-    productImage:'https://rukminim2.flixcart.com/image/312/312/knyxqq80/dslr-camera/r/y/x/digital-camera-eos-m50-mark-ii-eos-m50-mark-ii-canon-original-imag2gzkexzqhyhu.jpeg?q=70',
+    productImage:'https://rukminim2.flixcart.com/image/312/312/knyxqq80/dslr-camera/r/y/x/digital-camera-eos-m50-mark-ii-eos-m50-mark-ii-canon-orignal-imag2gzkexzqhyhu.jpeg?q=70',
     productName:'test2',
     productPrice:300,
     productSalePrice:200,

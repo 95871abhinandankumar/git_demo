@@ -1,6 +1,15 @@
-<div class="row">
-    <div *ngFor="let item of plist" class="col-md-3 p-4">
-        <app-product [data]="item" [data3]="data2" (btnClick)="addItem($event)"
-            (btnClick2)="updateData()"></app-product>
-    </div>
+<!-- we can we ng-container to put *ngif we want to call the Observable 
+    using async, we can also use directly but we have to handle the case of null -->
+
+<!-- <div class="row"> -->
+<div class="row" *ngIf="curr$ | async as mycode">
+  <!-- <div *ngFor="let item of product$ | async" class="col-md-3 p-4"> -->
+  <div *ngFor="let item of plist" class="col-md-3 p-4">
+    <app-product
+      [data]="item"
+      [data3]="mycode"
+      (btnClick)="addItem($event)"
+      (btnClick2)="updateData()"
+    ></app-product>
+  </div>
 </div>

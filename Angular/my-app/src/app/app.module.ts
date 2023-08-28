@@ -10,11 +10,17 @@ import { ConversionPipe } from './pipes/conversion.pipe';
 import { ProductPriceComponent } from './components/product-price/product-price.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CheckoutComponent } from './containers/checkout/checkout.component';
-import {errorTailorImports, provideErrorTailorConfig} from '@ngneat/error-tailor';
+import {
+  errorTailorImports,
+  provideErrorTailorConfig,
+} from '@ngneat/error-tailor';
 import { CurrencyComponent } from './components/currency/currency.component';
 import { NumberOnlyDirective } from './directives/number-only.directive';
-import { ImgFallbackDirective } from './directives/img-fallback.directive'
-import { HttpClientModule } from '@angular/common/http'
+import { ImgFallbackDirective } from './directives/img-fallback.directive';
+import { HttpClientModule } from '@angular/common/http';
+import { GithubSearchComponent } from './containers/github-search/github-search.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ErrorPageComponent } from './containers/error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -29,13 +35,16 @@ import { HttpClientModule } from '@angular/common/http'
     CheckoutComponent,
     CurrencyComponent,
     NumberOnlyDirective,
-    ImgFallbackDirective
+    ImgFallbackDirective,
+    GithubSearchComponent,
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     errorTailorImports,
     HttpClientModule,
+    AppRoutingModule,
   ],
   providers: [
     provideErrorTailorConfig({
@@ -48,8 +57,8 @@ import { HttpClientModule } from '@angular/common/http'
             `Valid pincode is ${validCode}`,
         },
       },
-    }), 
+    }),
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

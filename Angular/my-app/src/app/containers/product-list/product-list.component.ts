@@ -1,60 +1,86 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  DestroyRef,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  inject,
+} from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { CurrencyService } from 'src/app/services/currency.service';
 import { ProductService } from 'src/app/services/product.service';
 import { ProductType } from 'src/types';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css'],
-  providers:[ProductService]
+  providers: [ProductService],
 })
-export class ProductListComponent implements OnInit, OnChanges{
-  @Input({required:true}) data2 !: string;
-  plist:ProductType[]=[{
-    productId:100,
-    productImage:'https://rukminim2.flixcart.com/image/312/312/knyxqq80/dslr-camera/r/y/x/digital-camera-eos-m50-mark-ii-eos-m50-mark-ii-canon-original-imag2gzkexzqhyhu.jpeg?q=70',
-    productName:'test',
-    productPrice:120,
-    productSalePrice:100,
-    productStock: 2,
-  }, {
-    productId:101,
-    productImage:'https://rukminim2.flixcart.com/image/312/312/knyxqq80/dslr-camera/r/y/x/digital-camera-eos-m50-mark-ii-eos-m50-mark-ii-canon-orignal-imag2gzkexzqhyhu.jpeg?q=70',
-    productName:'test2',
-    productPrice:300,
-    productSalePrice:200,
-    productStock: 3,
-  },
-]
+export class ProductListComponent implements OnInit, OnChanges {
+  data2!: string;
+  plist!: ProductType[];
+  currency$!: Subscription;
+  destroyRef = inject(DestroyRef);
+  curr$!: Observable<string>;
+  product$!: Observable<ProductType[]>;
 
-  constructor(private productService: ProductService){}
+  constructor(
+    private productService: ProductService,
+    private currencyService: CurrencyService
+  ) {
+    //Method-3 to using async
+    //<div class="row" *ngif="curr$ | async as mycode">
+    //</div>
+    this.curr$ = this.currencyService.currencyObservable;
+    //<div *ngFor="let item of product$ | async " class="col-md-3 p-4">
+    //</div>
+    this.product$ = this.productService.getProducts();
+  }
   ngOnChanges(changes: SimpleChanges): void {
-    console.log("data changes");
+    console.log('data changes');
   }
   ngOnInit(): void {
     this.getData();
+
+    //method-1
+    this.currencyService.currencyObservable.subscribe((code) => {
+      this.data2 = code;
+    });
+
+    //method-2
+    this.currencyService.currencyObservable
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((code) => {
+        this.data2 = code;
+      });
   }
 
-  getData(){
+  getData() {
     this.productService.getProducts().subscribe(
-      (data)=>{
+      (data) => {
         this.plist = data;
       },
-      (err)=>{
-        console.log('Error', err)
+      (err) => {
+        console.log('Error', err);
       }
     );
 
     return null;
   }
 
-  addItem(data:any){
-    console.log("Item Added", data.id, data.name);
+  addItem(data: any) {
+    console.log('Item Added', data.id, data.name);
   }
 
-  updateData(){
-    const product:ProductType = this.plist[0];
+  updateData() {
+    const product: ProductType = this.plist[0];
     product.productSalePrice = 90;
 
-    this.plist = [{...product}, this.plist[1]];
+    this.plist = [{ ...product }, this.plist[1]];
   }
+}
+function takeUntilDestroy(): import('rxjs').OperatorFunction<string, unknown> {
+  throw new Error('Function not implemented.');
 }

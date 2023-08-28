@@ -1,14 +1,28 @@
 <!-- <button (click)="changeData()">Update Data</button> -->
 <div class="shadow p-4">
-    <img class="center" [src]="data.productImage" class="img-thumbnail">
-    <h4 class="fs-6">{{data.productName | uppercase }}</h4>
-    <app-product-price [price]="data.productPrice" [sellingPrice]="data.productSalePrice" [code]="data3" class="center"></app-product-price>  
-    <h5 class="center">{{data.productSalePrice | discount : data.productPrice}}</h5>
+  <img class="center" [src]="data.productImage" class="img-thumbnail" />
+  <h4 class="fs-6">{{ data.productName | uppercase }}</h4>
+  <app-product-price
+    [price]="data.productPrice"
+    [sellingPrice]="data.productSalePrice"
+    [code]="data3"
+    class="center"
+  ></app-product-price>
+  <h5 class="center">
+    {{ data.productSalePrice | discount : data.productPrice }}
+  </h5>
 
-    <!-- condition statement use *ngIf="condition" -->
-    <button (click)="notifyParent($event)" class="w-100 btn btn-primary" *ngIf="data.productStock > 0;else stock">Add to cart</button>
+  <!-- condition statement use *ngIf="condition" -->
+  <button
+    (click)="notifyParent($event)"
+    class="w-100 btn btn-primary"
+    *ngIf="data.productStock > 0; else stock"
+  >
+    <i class="fa-solid fa-cart-shopping"> Add to cart</i>
+    <!-- <i class="fa-light fa-cart-shopping">Add to cart</i> -->
+  </button>
 </div>
 
 <ng-template #stock>
-    <p>Out of Stock</p>
+  <p>Out of Stock</p>
 </ng-template>

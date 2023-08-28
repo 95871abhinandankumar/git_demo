@@ -14,6 +14,7 @@ import {errorTailorImports, provideErrorTailorConfig} from '@ngneat/error-tailor
 import { CurrencyComponent } from './components/currency/currency.component';
 import { NumberOnlyDirective } from './directives/number-only.directive';
 import { ImgFallbackDirective } from './directives/img-fallback.directive'
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ImgFallbackDirective } from './directives/img-fallback.directive'
     BrowserModule,
     ReactiveFormsModule,
     errorTailorImports,
+    HttpClientModule,
   ],
   providers: [
     provideErrorTailorConfig({

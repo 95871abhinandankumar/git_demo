@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+.control-error {
+  color: var(--bs-red);
+  font-size: 0.8rem;
+  padding: 0 10px;
+}

@@ -1,15 +1,21 @@
 <button type="button" (click)="loadData()">Load</button>
 <button type="button" (click)="patchData()">Patch</button>
-<form [formGroup]="checkoutForm" (submit)="saveData()" errorTailor>
+<div class="row">
+  <form
+    [formGroup]="checkoutForm"
+    (submit)="saveData()"
+    errorTailor
+    class="bg-light col"
+  >
     <label>Name : </label>
-    <input type="text" formControlName="name"><br>
+    <input type="text" formControlName="name" class="form-control" /><br />
     <!-- <div *ngIf="checkoutForm.get('name')?.touched">
         <small *ngIf="checkoutForm.get('name')?.hasError('required')">Name is required</small>
         <small *ngIf="checkoutForm.get('name')?.hasError('minlength')">Min 4 character is required</small>
     </div> -->
     <label>Email : </label>
-    <input type="text" formControlName="email">
-    <br>
+    <input type="text" formControlName="email" class="form-control" />
+    <br />
     <!-- <div formGroupName="address">
         <label>City : </label>
         <input type="text" formControlName="city"><br>
@@ -19,21 +25,52 @@
         <br>
     </div> -->
     <div formArrayName="address">
-        <button type="button" (click)="addAddress()">Add</button>
-        <div [formGroupName]="i" *ngFor="let ctrl of addressObj.controls; let i = index">
-            <label>City : </label>
-            <input type="text" formControlName="city"><br>
-            <label>Pincode : </label>
-            <input type="text" formControlName="pincode">
-            <button type="button" (click)="removeAddress(i)">Remove</button>
-            <br>
+      <div class="d-flex flex-row-reverse">
+        <button
+          type="button"
+          (click)="addAddress()"
+          class="btn btn-outline-primary"
+        >
+          Add Address
+        </button>
+      </div>
+      <div class="d-flex flex-column-reverse">
+        <div
+          [formGroupName]="i"
+          *ngFor="let ctrl of addressObj.controls; let i = index"
+          class="d-flex flex-row justify-content-between mb-2"
+        >
+          <div class="form-group w-100">
+            <input
+              type="text"
+              formControlName="city"
+              class="form-control"
+              placeholder="city"
+            />
+          </div>
+          <div class="form-group w-100 mx-2">
+            <input
+              type="text"
+              formControlName="pincode"
+              class="form-control"
+              placeholder="pincode"
+            />
+          </div>
+          <button
+            type="button"
+            (click)="removeAddress(i)"
+            class="btn btn-sm btn-danger mx-2"
+          >
+            <i class="fa-solid fa-trash"></i>
+          </button>
         </div>
+      </div>
     </div>
-    <button type="submit">Submit</button>
-    <pre>Form Data : {{checkoutForm.value | json}}</pre>
-
-    <br>
-    <br>
-    <br>
-    <br>
-</form>
+    <button class="btn mt-2 btn-success" type="submit">Submit</button>
+  </form>
+  <div class="col">
+    <pre class="alert alert-info">
+Form Data : {{ checkoutForm.value | json }}</pre
+    >
+  </div>
+</div>

@@ -1,3 +1,6 @@
-<div *ngFor="let item of plist">
-    <app-product [data]="item" [data3]="data2" (btnClick)="addItem($event)" (btnClick2)="updateData()"></app-product>
+<div class="row">
+    <div *ngFor="let item of plist" class="col-md-3 p-4">
+        <app-product [data]="item" [data3]="data2" (btnClick)="addItem($event)"
+            (btnClick2)="updateData()"></app-product>
+    </div>
 </div>

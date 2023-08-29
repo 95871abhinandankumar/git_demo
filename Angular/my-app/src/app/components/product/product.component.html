@@ -1,6 +1,13 @@
 <!-- <button (click)="changeData()">Update Data</button> -->
 <div class="shadow p-4">
-  <img class="center" [src]="data.productImage" class="img-thumbnail" />
+  <img
+    class="center"
+    [src]="data.productImage"
+    class="img-thumbnail"
+    [routerLink]="['/product-detail', data.productId]"
+    [queryParams]="{ size: 'm', rating: 4 }"
+    style="cursor: pointer"
+  />
   <h4 class="fs-6">{{ data.productName | uppercase }}</h4>
   <app-product-price
     [price]="data.productPrice"

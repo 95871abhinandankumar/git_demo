@@ -21,6 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { GithubSearchComponent } from './containers/github-search/github-search.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ErrorPageComponent } from './containers/error-page/error-page.component';
+import { ProductDetailComponent } from './containers/product-detail/product-detail.component';
+import { UiModule } from './ui/ui.module';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { ErrorPageComponent } from './containers/error-page/error-page.component
     ImgFallbackDirective,
     GithubSearchComponent,
     ErrorPageComponent,
+    ProductDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +48,7 @@ import { ErrorPageComponent } from './containers/error-page/error-page.component
     errorTailorImports,
     HttpClientModule,
     AppRoutingModule,
+    UiModule,
   ],
   providers: [
     provideErrorTailorConfig({

@@ -12,6 +12,7 @@ import { CurrencyService } from 'src/app/services/currency.service';
 import { ProductService } from 'src/app/services/product.service';
 import { ProductType } from 'src/types';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -28,7 +29,8 @@ export class ProductListComponent implements OnInit, OnChanges {
 
   constructor(
     private productService: ProductService,
-    private currencyService: CurrencyService
+    private currencyService: CurrencyService,
+    private router: Router
   ) {
     //Method-3 to using async
     //<div class="row" *ngif="curr$ | async as mycode">
@@ -72,6 +74,7 @@ export class ProductListComponent implements OnInit, OnChanges {
 
   addItem(data: any) {
     console.log('Item Added', data.id, data.name);
+    this.router.navigateByUrl('/cart');
   }
 
   updateData() {

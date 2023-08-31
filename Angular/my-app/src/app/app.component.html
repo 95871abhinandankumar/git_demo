@@ -14,17 +14,12 @@
 <!-- <app-checkout></app-checkout> -->
 <!-- <app-currency (currencySelected)="getCode($event)"></app-currency> -->
 
-<ul
-  class="d-flex justify-content-around"
-  style="background-color: rgb(127, 244, 238)"
->
-  <li><a routerLink="/">Home</a></li>
-  <li><a routerLink="/demo">Demo</a></li>
-  <li><a routerLink="/checkout">checkout</a></li>
-</ul>
-
-<div class="container-fluid bg-light">
-  <app-currency></app-currency>
+<div class="container-fluid">
+  <app-menu>
+    <app-login-buttons></app-login-buttons>
+    <app-currency></app-currency>
+  </app-menu>
+  <app-loader></app-loader>
   <router-outlet></router-outlet>
 </div>
 <!-- <app-product-list></app-product-list> -->

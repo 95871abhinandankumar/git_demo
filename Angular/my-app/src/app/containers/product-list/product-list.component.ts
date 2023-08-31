@@ -12,7 +12,7 @@ import { CurrencyService } from 'src/app/services/currency.service';
 import { ProductService } from 'src/app/services/product.service';
 import { ProductType } from 'src/types';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -26,11 +26,13 @@ export class ProductListComponent implements OnInit, OnChanges {
   destroyRef = inject(DestroyRef);
   curr$!: Observable<string>;
   product$!: Observable<ProductType[]>;
+  query: string | null = null;
 
   constructor(
     private productService: ProductService,
     private currencyService: CurrencyService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
     //Method-3 to using async
     //<div class="row" *ngif="curr$ | async as mycode">
@@ -45,6 +47,10 @@ export class ProductListComponent implements OnInit, OnChanges {
   }
   ngOnInit(): void {
     this.getData();
+
+    this.activatedRoute.queryParamMap.subscribe((object) => {
+      this.query = object.has('q') ? object.get('q') : null;
+    });
 
     //method-1
     this.currencyService.currencyObservable.subscribe((code) => {

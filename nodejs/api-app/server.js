@@ -6,11 +6,13 @@ const argv = yargs(hideBin(process.argv)).argv;
 const { rateLimit } = require("express-rate-limit");
 //For parsing
 const express = require("express");
+const authMiddleware = require("./middlewares/auth");
 
 const app = express();
 const PORT_NUMBER = argv.port || 3000;
 const testRouter = require("./routes/test");
 const productRouter = require("./routes/product");
+const userRouter = require("./routes/user");
 
 const limiter = rateLimit({
   windowMs: 5 * 60 * 1000, // 15 minutes
@@ -36,9 +38,12 @@ console.log(process.argv, argv);
 console.log(process.env.PASSWORD);
 
 app.use(helmet());
+app.use(authMiddleware);
+
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use("/auth", userRouter);
 
 app.use("/test", testRouter);
 app.use("/product", productRouter);

@@ -8,6 +8,7 @@ router.post("/upload", upload.single("image"), function (req, res) {
   try {
     return res.status(200).json({ file: req.file, body: req.body });
   } catch (e) {
+    console.log("error in product ......");
     return res.status(400).json(e);
   }
 });
@@ -24,6 +25,7 @@ router.post("/", async (req, res) => {
 });
 
 router.get("/:id?", async (req, res) => {
+  console.log("products");
   try {
     let data;
     if (req.params.id) {

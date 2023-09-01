@@ -1,21 +1,34 @@
 //For formatting we need this library
+require("dotenv").config();
 const yargs = require("yargs/yargs");
 const { hideBin } = require("yargs/helpers");
 const argv = yargs(hideBin(process.argv)).argv;
-
+const { rateLimit } = require("express-rate-limit");
 //For parsing
 const express = require("express");
 
 const app = express();
 const PORT_NUMBER = argv.port || 3000;
 const testRouter = require("./routes/test");
+const productRouter = require("./routes/product");
+
+const limiter = rateLimit({
+  windowMs: 5 * 60 * 1000, // 15 minutes
+  max: 5, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+  standardHeaders: "draft-7", // draft-6: RateLimit-* headers; draft-7: combined RateLimit header
+  legacyHeaders: false, // X-RateLimit-* headers
+});
+
+//Databse
+const db = require("./db");
 
 //For security
 const helmet = require("helmet");
 
 //For logger
 const morgan = require("morgan");
-require("dotenv").config();
+
+app.use(limiter);
 
 console.log(process.argv, argv);
 
@@ -28,6 +41,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/test", testRouter);
+app.use("/product", productRouter);
 
 app.listen(PORT_NUMBER, (err) => {
   console.log("Attempting to start the server");
@@ -36,4 +50,5 @@ app.listen(PORT_NUMBER, (err) => {
     return process.exit(1);
   }
   console.log(`starting server on http://localhost:${PORT_NUMBER}`);
+  db().catch((e) => console.log("Failed to connect to db :", e));
 });

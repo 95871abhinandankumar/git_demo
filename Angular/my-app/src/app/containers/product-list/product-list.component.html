@@ -4,7 +4,16 @@
 <!-- <div class="row"> -->
 <div class="row" *ngIf="curr$ | async as mycode">
   <!-- <div *ngFor="let item of product$ | async" class="col-md-3 p-4"> -->
-  <div *ngFor="let item of plist | search : query" class="col-md-3 p-4">
+  <app-sortby></app-sortby>
+  <div
+    *ngFor="
+      let item of plist
+        | search : query
+        | sort : sortBy
+        | pagination : currentPage
+    "
+    class="col-md-3 p-4"
+  >
     <app-product
       [data]="item"
       [data3]="mycode"
@@ -13,3 +22,4 @@
     ></app-product>
   </div>
 </div>
+<app-pagination></app-pagination>

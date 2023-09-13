@@ -10,6 +10,6 @@ export class MenuComponent {
   router = inject(Router);
   updateQuery(event: Event) {
     const ele = event.target as HTMLInputElement;
-    this.router.navigate(['/'], { queryParams: { q: ele.value } });
+    this.router.navigate(['/'], { queryParams: { search: ele.value } });
   }
 }

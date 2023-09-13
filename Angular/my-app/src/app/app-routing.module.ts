@@ -8,10 +8,12 @@ import { ErrorPageComponent } from './containers/error-page/error-page.component
 import { ProductDetailComponent } from './containers/product-detail/product-detail.component';
 import { GithubSearchComponent } from './containers/github-search/github-search.component';
 import { authGuard } from './services/auth.guard';
+import { CartComponent } from './components/cart/cart.component';
 
 const routes: Routes = [
   { path: '', component: ProductListComponent },
   { path: 'demo', component: DemoComponent },
+  { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent, canActivate: [authGuard] },
   {
     path: 'user',

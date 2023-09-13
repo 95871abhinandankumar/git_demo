@@ -17,3 +17,8 @@ export type UserType = {
   refreshToken: string;
   expiresIn: string;
 };
+
+export type CartItem = {
+  product: ProductType;
+  count: number;
+};

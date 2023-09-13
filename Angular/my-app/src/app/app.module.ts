@@ -28,6 +28,14 @@ import { HttpLoaderInterceptor } from './services/http-loader.interceptor';
 import { LoaderModule } from './loader/loader.module';
 import { MenuComponent } from './components/menu/menu.component';
 import { SearchPipe } from './pipes/search.pipe';
+import { SortPipe } from './pipes/sort.pipe';
+import { SortbyComponent } from './components/sortby/sortby.component';
+import { PaginationPipe } from './pipes/pagination.pipe';
+import { PaginationComponent } from './components/pagination/pagination.component';
+import { FakeArrayPipe } from './pipes/fake-array.pipe';
+import { CartComponent } from './components/cart/cart.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -49,6 +57,12 @@ import { SearchPipe } from './pipes/search.pipe';
     LoginButtonsComponent,
     MenuComponent,
     SearchPipe,
+    SortPipe,
+    SortbyComponent,
+    PaginationPipe,
+    PaginationComponent,
+    FakeArrayPipe,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +72,8 @@ import { SearchPipe } from './pipes/search.pipe';
     AppRoutingModule,
     UiModule,
     LoaderModule,
+    BrowserAnimationsModule,
+    MatPaginatorModule,
   ],
   providers: [
     {
